@@ -26,6 +26,12 @@ typedef struct LOGGER {
 logger lg;
 
 
+// init_logger initialises logger with output stream and configurations settings
+// like
+// log_file - whether to log the file from what the log call was made.
+// log_func - whether to log the function that the log was called from.
+// log_level - whether to log the logs level, like ERROR, WARN, INFO, DEBUG.
+// log_color - whether to use ASCII escape codes to color the log.
 void init_logger(
     FILE* file,
     bool log_file,
@@ -45,9 +51,17 @@ int log_all(
 );
 
 
+// log_error logs the specified arguments with log level - ERROR. log_error
+// expects arguments in format log_error(char* fmt, ...)
 #define log_error(...) log_all(__FILE__, __LINE__, __FUNCTION__, LOG_LEVEL_ERROR, __VA_ARGS__)
+// log_warn logs the specified arguments with log level - WARN. log_error
+// expects arguments in format log_warn(char* fmt, ...)
 #define log_warn(...) log_all(__FILE__, __LINE__, __FUNCTION__, LOG_LEVEL_WARN, __VA_ARGS__)
+// log_info logs the specified arguments with log level - WARN. log_error
+// expects arguments in format log_info(char* fmt, ...)
 #define log_info(...) log_all(__FILE__, __LINE__, __FUNCTION__, LOG_LEVEL_INFO, __VA_ARGS__)
+// log_debug logs the specified arguments with log level - DEBUG. log_error
+// expects arguments in format log_debug(char* fmt, ...)
 #define log_debug(...) log_all(__FILE__, __LINE__, __FUNCTION__, LOG_LEVEL_DEBUG, __VA_ARGS__)
 
 

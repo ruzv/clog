@@ -56,19 +56,19 @@ int log_all(
             } else {
                 fprintf(lg.file, "[DEBUG] ");
             }
-        } else if ( level == LOG_LEVEL_INFO) {
+        } else if (level == LOG_LEVEL_INFO) {
             if (lg.log_color) {
                 fprintf(lg.file, "%s[INFO]%s ", info_color, reset_color);
             } else {
                 fprintf(lg.file, "[INFO] ");
             }
-        } else if ( level == LOG_LEVEL_WARN) {
+        } else if (level == LOG_LEVEL_WARN) {
             if (lg.log_color) {
                 fprintf(lg.file, "%s[WARN]%s ", warn_color, reset_color);
             } else {
                 fprintf(lg.file, "[WARN] ");
             }
-        } else if ( level == LOG_LEVEL_ERROR) {
+        } else if (level == LOG_LEVEL_ERROR) {
             if (lg.log_color) {
                 fprintf(lg.file, "%s[ERROR]%s ", error_color, reset_color);
             } else {
@@ -91,6 +91,8 @@ int log_all(
     va_end(ap);
 
     putc('\n', lg.file);
+
+    fflush(lg.file);
 
     return 0;
 }
