@@ -12,6 +12,12 @@ char* func_color = "\x1b[38;5;163m";
 char* reset_color = "\x1b[0m";
 
 
+// init_logger initialises logger with output stream and configurations settings
+// like
+// log_file - whether to log the file from what the log call was made.
+// log_func - whether to log the function that the log was called from.
+// log_level - whether to log the logs level, like ERROR, WARN, INFO, DEBUG.
+// log_color - whether to use ASCII escape codes to color the log.
 void init_logger(
     FILE* file,
     bool log_file,
@@ -27,6 +33,8 @@ void init_logger(
 }
 
 
+// log_all is not intended for external use. generates a single log line with
+// the settings specified and writes it to file specified in logger settings.
 int log_all(
     const char* file,
     int line,

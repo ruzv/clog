@@ -14,6 +14,7 @@
 #define LOG_LEVEL_DEBUG 1
 
 
+// logger struct describes logger configuration params.
 typedef struct LOGGER {
     FILE* file;
     bool log_file;
@@ -23,6 +24,7 @@ typedef struct LOGGER {
 } logger;
 
 
+// lg stores logger configuration.
 logger lg;
 
 
@@ -41,6 +43,8 @@ void init_logger(
 );
 
 
+// log_all is not intended for external use. generates a single log line with
+// the settings specified and writes it to file specified in logger settings.
 int log_all(
     const char* file,
     int line,
